@@ -1,0 +1,64 @@
+<div class="col-md-9 nopad">
+  <div class="section-header">Add Multimedia</div>
+  <div class="col-md-12 space-top">
+    <div class="">
+      <div class="col-sm-12 CMS-form">
+        <div class="col-sm-6">
+          <label>Title</label>
+          <input type="Title" class="form-control" placeholder="Title" [(ngModel)]="content.title" [ngClass]="{'invalid': errorMap.title}">
+        </div>
+        <div class="col-sm-6">
+          <label>Type</label>
+          <select name="" class="form-control" [(ngModel)]="content.type" [ngClass]="{'invalid': errorMap.type}">
+            <option value="LINK">Article</option>
+            <option value="YOUTUBE_VIDEO">Video</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-12 space-top CMS-form">
+        <div class="col-sm-6">
+          <label>Link</label>
+          <input type="Title" class="form-control" placeholder="Link" [(ngModel)]="content.url" [ngClass]="{'invalid': errorMap.url}">
+        </div>
+        <div class="col-sm-6">
+          <label>Status</label>
+          <select name="" class="form-control" [(ngModel)]="content.status" [ngClass]="{'invalid': errorMap.status}">
+            <option value="ACTIVE">Active</option>
+            <option value="SAVED">Created</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-12 space-top CMS-form">
+        <div class="col-sm-6">
+          <label>Start Date</label>
+          <input type="start" [dpDayPicker]="datePickerConfig" class="media-date form-control" placeholder="Start Date" [(ngModel)]="startDate"  [ngClass]="{'invalid': errorMap.startDate}">
+        </div>
+        <div class="col-sm-6">
+          <label>End Date</label>
+          <input type="text" [dpDayPicker]="datePickerConfig" class="media-date form-control" placeholder="End Date" [(ngModel)]="endDate" [ngClass]="{'invalid': errorMap.endDate}">
+        </div>
+      </div>
+      <div class="col-sm-12 space-top CMS-form" *ngIf="content.type == 'LINK'">
+        <span *ngIf="errorMap.tblErrorMessage" class="error-message">{{'*' + errorMap.tblErrorMessage}}</span>
+        <div class="col-sm-6">
+          <label>Upload Thumbnail</label>
+          <div class="input-group image-preview">
+            <input [ngClass]="{'invalid': errorMap.tblErrorMessage}" (keydown)= "disableInput($event)" type="text" class="form-control image-preview-filename" placeholder="Logo upload" [(ngModel)]="thumbnail"> <!-- don't give a name === doesn't send on POST/GET -->
+            <span class="input-group-btn">
+              <div class="btn btn-default image-preview-input">
+                 <span class="image-preview-input-title" >Choose File</span>
+                 <input *ngIf="!disabled" #tblFileInput type="file"
+                        (change)="fileChangeEvent($event)"
+                        accept="image/png, image/jpeg, image/jpg"
+                        name="input-file-preview"/>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 space-top">
+        <a href="javascript:void(0)" class="btn primary-button" style="margin-left:15px" (click)="submit()">Save</a>
+      </div>
+    </div>
+  </div>
+</div>

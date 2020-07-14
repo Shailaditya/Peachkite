@@ -1,0 +1,17 @@
+.search-company-wrapper .header-search-tfBig{
+	border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width:100%;
+}
+.ngui-auto-complete {
+  margin-left: 10% !important;
+  z-index:2 !important;
+}
+
+ngui-auto-complete .ngui-auto-complete{
+  z-index:2 !important;
+  margin-left: 10% !important;
+  z-index:2 !important;
+  cursor:pointer;
+}
+

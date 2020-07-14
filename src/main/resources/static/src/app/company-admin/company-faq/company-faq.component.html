@@ -1,0 +1,21 @@
+<div class="col-md-9 nopad" *ngIf="faqList">
+  <div class="section-header">FAQ</div>
+  <div class="col-md-12 space-top">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr> <th>SR</th> <th> Query</th> <th>Status</th></tr> </thead>
+        <tbody>
+        <tr *ngFor="let faq of faqList" class="content-row" (click)="editFaq(faq.id)">
+          <td scope="row">{{faq.serialNumber}}</td>
+          <td>{{faq.question}}</td>
+          <td>{{faq.status}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="col-sm-12 space-top">
+        <a href="javascript:void(0)" (click)="addFaq()" class="btn primary-button" style="margin-left:15px">Add</a>
+      </div>
+    </div>
+  </div>
+</div>

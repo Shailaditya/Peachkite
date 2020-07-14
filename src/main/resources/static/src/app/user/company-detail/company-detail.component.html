@@ -1,0 +1,227 @@
+<ng-container *ngIf="isLoaded">
+  <section class="in-page">
+    <div class="company-details">
+      <div class="container comp-info card-3">
+        <div class="col-md-3 col-sm-3"><img src="{{company.logo}}" alt="{{company.name}}" class="img-responsive"></div>
+        <div class="col-md-3 col-sm-3">
+          <h3>{{company.name}}</h3>
+          <h5>{{company.industry}}</h5>
+          <h4>{{company.employeeRange}}</h4>
+        </div>
+        <div  class="col-md-6 col-sm-6">
+          <div *ngIf="company.isVerified" class="col-md-4 col-sm-2 col-xs-2 text-center margin-right">
+            <h1><img src="assets/images/Verified.svg">
+            </h1>
+            <div class="text-center">Claimed </div>
+          </div>
+          <div *ngIf="!company.isVerified" class="col-md-4 col-sm-2 col-xs-2 text-center">
+            <img src="assets/images/unverified.png" style="height: 34px;margin-top: 20px;">
+            <div  class="text-center" style="margin-top: 8px;">
+              <a href="javascript:void(0)" (click)="claimCompany()" class="primary-button"style ="margin-top:10px">Claim Now</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-10 social-space-top">
+            <div class="text-center">
+              <a  href="#"class="btn2 btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+              <a  href="#" class="btn2 btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+              <a  href="#" class="btn2 btn-social-icon btn-google-plus"><i class="fa fa-google-plus"></i></a>
+              <a  href="#" class="btn2 btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <div  class="text-center" *ngIf="!isRated">
+              <a href="javascript:void(0)" (click)="isLoggedIn?gotoReviewPage():showSigninDialog()" class="primary-button"style ="margin-top:10px">Rate Now</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-3 col-xs-12 text-center black-box">
+            <h2>
+              {{roundOff(company.rating)}}
+            </h2>
+            <div class="text-center">{{company.feedbackCount+' Ratings'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="company-details-main">
+    <div class="container">
+      <div class="space-bot">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 ">
+            <div class="progress pink">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+              <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+              <div class="progress-value">{{roundOff(company.categoryRatings[1])}}</div>
+            </div>
+            <h4 class="text-center">Diversity</h4>
+          </div>
+          <div class="col-md-3 col-sm-6  ">
+            <div class="progress yellow">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+              <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+              <div class="progress-value">{{roundOff(company.categoryRatings[2])}}</div>
+            </div>
+            <h4 class="text-center">Life/WorkBalance</h4>
+          </div>
+          <div class="col-md-3 col-sm-6 ">
+            <div class="progress green">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+              <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+              <div class="progress-value">{{roundOff(company.categoryRatings[3])}}</div>
+            </div>
+            <h4 class="text-center">Flexible</h4>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="progress blue">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+              <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+              <div class="progress-value">{{roundOff(company.categoryRatings[4])}}</div>
+            </div>
+            <h4 class="text-center">Enrichment</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <div class="pull-rightl">
+              <div class="panel-group" id="accordionPar" role="tablist" aria-multiselectable="true">
+                <div class="panel text-right space-top">
+                  <div class="panel-heading1" role="tab" id="headingPar">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionPar" href="#collapsePar" aria-expanded="true" aria-controls="collapsePar">
+                      Click for Details
+                    </a>
+                  </div>
+                  <div id="collapsePar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPar">
+                    <div class="panel-body">
+                      <div class="col-sm-6">
+                        <ul class="list-group">
+                          <li class="list-group-item" *ngFor="let benefit of benefitArrays[0]"><strong>{{roundOff(benefit.rating)}}</strong> {{benefit.label}}</li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-6">
+                        <ul class="list-group">
+                          <li class="list-group-item" *ngFor="let benefit of benefitArrays[1]"><strong>{{roundOff(benefit.rating)}}</strong> {{benefit.label}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <nav *ngIf="company.isVerified || company.feedbackCount" class="navbar navbar-inverse no-radius" style="margin-bottom:0px">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li *ngIf="company.isVerified" class="li"><a href="javascript:void(0)" (click)="scrollInView('Aboutus')">About</a></li>
+        <li *ngIf="company.isVerified" class="li1"><a href="javascript:void(0)" (click)="scrollInView('Benefits')">Benefits</a></li>
+        <li *ngIf="company.isVerified" class="li2"><a href="javascript:void(0)" (click)="scrollInView('Faqs')">FAQs</a></li>
+        <li *ngIf="company.feedbackCount" class="li3"><a href="javascript:void(0)" (click)="scrollInView('Testimonials')">Testimonials</a></li>
+        <li *ngIf="company.isVerified" class="li4"><a href="javascript:void(0)" (click)="scrollInView('PostArticles')">Post & Articles</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section *ngIf="company.isVerified" class="company-about">
+    <div class="container">
+      <div id="Aboutus">
+        <div id="overlay" class="hide" style="height:80px;"></div>
+        <div class="page-header"><h3> About</h3></div>
+        <div class="row comp-info card-1">
+          <div class="col-md-9 col-sm-8">
+            {{company.aboutUs}}
+          </div>
+          <div class="col-md-3 col-sm-4"><img src="{{company.aboutUsImage?company.aboutUsImage:'assets/images/company-img.jpg'}}" alt="Company" class="img-responsive"></div>
+        </div>
+      </div>
+      <br>
+      <div id="Benefits">
+        <div id="overlay1" class="hide" style="height:80px;"></div>
+        <div class="page-header"><h3> Benefits </h3></div>
+        <div class="row">
+          <div class="col-sm-4">
+            <ul class="fa-ul">
+              <li *ngFor="let benefit of standardBenefitArrays[0]">
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>{{benefit}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul class="fa-ul">
+              <li *ngFor="let benefit of standardBenefitArrays[1]">
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>{{benefit}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul class="fa-ul">
+              <li *ngFor="let benefit of standardBenefitArrays[2]" >
+                <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>{{benefit}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div id="Faqs">
+      <section class="faq">
+        <div class="container">
+          <div class="row">
+            <div id="overlay2" class="hide" style="height:80px;"></div>
+            <div class="page-header"><h3>Frequently asked questions</h3></div>
+            <div class="col-sm-6 space-top" *ngFor="let faq of faqs">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="{{'#'+faq.id}}" aria-expanded="false">
+                        {{faq.question}}
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="{{faq.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false">
+                    <div class="panel-body col-sm-9">
+                      {{faq.response}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        <div class="ask">
+          <h4>Did not find what you were looking for ?</h4>
+          <button *ngIf="!isQueryBoxOpen" class="btn primary-button" id="asknow" (click)="handleAskNowClick()">	ASK NOW</button>
+          <div class="container " id="askform" *ngIf="isQueryBoxOpen">
+            <div class="col-md-6 col-md-offset-3">
+              <button class="close" id="closebtn" (click)="isQueryBoxOpen=false">×</button>
+              <div>
+                <textarea [(ngModel)]="queryText" class="form-control" placeholder="Query" style="height:80px;" maxlength="200"></textarea>
+              </div>
+              <div class="text-center">
+                <button class="btn primary-button" id="closeform" (click)="sendQuery()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  <app-company-testimonials [isRated]="isRated" *ngIf="company.feedbackCount" (pageEvent)="showSigninDialog()" [companyId]="companyId"></app-company-testimonials>
+  <app-company-content *ngIf="company.isVerified" (showDialog)="showSigninDialog()" [companyId]="companyId"> </app-company-content>
+</ng-container>

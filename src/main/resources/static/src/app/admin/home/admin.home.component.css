@@ -1,0 +1,11 @@
+.search-company-wrapper{
+  text-align: center;
+  width:auto;
+  display: inline-flex;
+}
+
+.create-new{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+}

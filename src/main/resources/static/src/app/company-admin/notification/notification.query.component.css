@@ -1,0 +1,4 @@
+.form-control[disabled]{
+  cursor: default !important;
+  background: white !important;
+}

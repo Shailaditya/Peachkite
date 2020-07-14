@@ -1,0 +1,36 @@
+<div id="PostArticles" class="postarticles-section">
+  <div id="overlay4" class="hide" style="height:80px">	</div>
+  <div class="container">
+    <div class="col-xs-12">
+      <div class="page-header">
+        <h3>Post & Articles
+          <small><nav class="pull-right">
+            <ul class="control-box pager">
+              <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+              <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            </ul>
+          </nav></small>
+        </h3>
+      </div>
+      <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+          <div *ngFor="let contentList of contentArray ;let i = index" [ngClass]="{'active': i ==0}" class="item">
+            <ul class="thumbnails">
+              <li class="col-sm-3" *ngFor="let content of contentList">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="javascript:void(0)" (click)="openLink(content.url)"><img class="content-image" src="{{content.thumbnail}}" alt=""></a>
+                  </div>
+                  <div class="caption">
+                    <h5>{{content.title}}</h5>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /.control-box -->
+      </div><!-- /#myCarousel -->
+    </div><!-- /.col-xs-12 -->
+  </div><!-- /.container -->
+</div>

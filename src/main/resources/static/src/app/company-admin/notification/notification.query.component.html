@@ -1,0 +1,21 @@
+<div class="col-md-9 nopad" *ngIf="notification">
+  <div class="section-header">Query</div>
+  <div class="col-sm-12 space-top CMS-form">
+    <div class="col-sm-12">
+      <label>Query</label>
+      <textarea disabled name="" cols="" rows="" placeholder="About" class="form-control" [(ngModel)]="query" maxlength="400"></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12 space-top CMS-form">
+    <div class="col-sm-12">
+      <label>Response</label>
+      <textarea [attr.disabled]="notification.status != 'Pending'?true:null" name="" cols="" rows="" placeholder="About" class="form-control" [(ngModel)]="response" maxlength="400"></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12 space-top CMS-form">
+    <div class="text-center">
+      <button class="btn secondary-button" (click)="goto('app.company-admin.notifications')">Back</button>
+      <button *ngIf="notification.status == 'Pending'" [attr.disabled]="!response || disableSave ? true : null" class="btn primary-button" (click)="send()">Send</button>
+    </div>
+  </div>
+</div>

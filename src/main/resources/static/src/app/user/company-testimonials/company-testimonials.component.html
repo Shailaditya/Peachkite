@@ -1,0 +1,37 @@
+<div id="Testimonials" class="testimonials-section">
+  <div id="overlay3" class="hide" style="height:80px">	</div>
+  <div *ngIf="!noData" class="container">
+    <div class="page-header">
+      <h3>What people say about us</h3>
+    </div>
+    <p>&nbsp;</p>
+    <ng-container *ngFor="let testimonialSet of testimonials">
+      <div class="row">
+          <div class="col-sm-6" *ngFor="let testimonial of testimonialSet">
+            <div class="col-sm-3 text-center">
+              <div class="prfile-ph">
+                <img alt="Company" class="svg-female"
+                     [attr.src]="testimonial.martialStatus=='Married'?'assets/images/married.svg':(testimonial.martialStatus=='Single'?'assets/images/single.svg':'assets/images/mother.svg')">
+              </div>
+              <h5>{{testimonial.martialStatus}}
+                <br><small>{{getTime(testimonial.date)}}</small>
+              </h5>
+            </div>
+            <div class="col-sm-9">
+              {{testimonial.comment}}
+            </div>
+          </div>
+      </div>
+      <div class="devider"></div>
+    </ng-container>
+    <div class="text-center" *ngIf="!isLast">
+      <h5>
+      <a href="javascript:void(0)" (click)="next()">Load more reviews <span class="glyphicon glyphicon-chevron-down"></span></a>
+      </h5>
+    </div>
+  </div>
+  <div *ngIf="noData" class="text-center">
+    <h4 style="font-style:  italic;">"No reviews found."</h4>
+    <h4 *ngIf="!isRated" style="font-style:  italic;">"Be the first one to review."</h4>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.status-wrapper{
+  margin-bottom: 30px;
+}
+
+.status-label{
+  position: absolute;
+  bottom: 62px;
+  left: 25px;
+}
+
+.status-select{
+  width: 25%;
+  float: right;
+  margin-right: 65%;
+}
+
+.save-btn{
+  margin-top: 25px;
+}
+
+.form-wrpper{
+  padding-right:15px;
+  padding-left:15px;
+}
+
+.invalid{
+  border:1px solid #ff0000 !important;
+}

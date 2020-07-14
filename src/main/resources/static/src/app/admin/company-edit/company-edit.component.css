@@ -1,0 +1,8 @@
+.company-name .invalid{
+  border:1px solid #ff0000;
+}
+
+.error-message{
+  color:#ff0000;
+  text-align: center;
+}

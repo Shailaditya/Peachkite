@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title></title>
+   </head>
+   <body>
+      <div class="container">
+         <div class="card card-container">
+            <div class="signin"></div>
+            <p class="login-error text-center" th:if="${error == true}">Incorrect Credentials !!</p>
+            <form class="form-signin" action="login" method="POST">
+               <span id="reauth-email" class="reauth-email"></span>
+               <input type="text" id="username" name="username" class="form-control" placeholder="Email address" required="required" autofocus="true"/>
+               <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required"/>
+               <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+               <label for="remember-me">Remember Me?</label>
+               <input type="checkbox" id="remember-me" name="remember-me"/>
+               <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" >Sign in</button>
+            </form>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" onclick="window.location='/uaa'" >Go Back</button>
+         </div>
+         <!-- /card-container -->
+      </div>
+      <!-- /container -->
+   </body>
+</html>

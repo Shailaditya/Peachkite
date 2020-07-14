@@ -1,0 +1,17 @@
+.form-control[disabled]{
+  cursor: default !important;
+  background: white !important;
+}
+
+.kite .benefit-selected{
+  text-decoration: none !important;
+  background:url(../assets/images/kite.png) no-repeat left -18px !important;
+}
+
+.kite a{
+  cursor: default !important;
+}
+
+.admin-review .rating-section{
+  background: none !important;
+}

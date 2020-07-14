@@ -1,0 +1,21 @@
+<div class="col-md-9 nopad" *ngIf="faq">
+  <div class="section-header">{{faqId?'Edit FAQ':'Create FAQ'}}</div>
+  <div class="CMS-form form-wrpper">
+    <div class="space-top">
+      <input type="text" class="form-control" placeholder="Query" [(ngModel)]="faq.question" [ngClass]="{'invalid': errorMap.question}">
+    </div>
+    <div class="space-top" >
+      <textarea class="form-control" [(ngModel)]="faq.response" placeholder="Response" style="height:60px;" [ngClass]="{'invalid': errorMap.response}"></textarea>
+    </div>
+    <div class="space-top status-wrapper" >
+      <label class="status-label">Status</label>
+      <select name="" class="form-control status-select" [(ngModel)]="faq.status" [ngClass]="{'invalid': errorMap.status}">
+        <option value="Saved">Saved</option>
+        <option value="Published">Published</option>
+      </select>
+    </div>
+    <div class="col-sm-12 save-btn">
+      <button class="btn primary-button" id="closeform" (click)="save()">Save</button>
+    </div>
+  </div>
+</div>

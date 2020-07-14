@@ -1,0 +1,33 @@
+<div class="modal-dialog">
+  <div class="modal-content modal-min-height">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" (click)="cancel()">&times;</button>
+      <h4 class="modal-title">{{title || 'Sign - In'}}</h4>
+    </div>
+    <div class="modal-body" *ngIf="!forgotPassword">
+      <div class="col-md-8 col-md-offset-2">
+        <form name="loginForm" #loginForm="ngForm" (ngSubmit)="signin()">
+          <div class="form-group">
+            <input type="email" class="form-control"  placeholder="Email"
+                   [(ngModel)]="username" name="username" required #email="ngModel">
+            <div class="error" *ngIf="email.errors && email.errors.required">Please enter email.</div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                   name="password"  required #pswd="ngModel">
+            <div class="error" *ngIf="pswd.errors && pswd.errors.required">Please enter password.</div>
+            <div class="error" *ngIf="errorMessage">{{errorMessage}} </div>
+          </div>
+          <a href="javascript:void(0)" class="btn primary-button" [ngClass]="{'disabled':!loginForm.form.valid}" (click)="signin()">Login</a>
+          <a href="javascript:void(0)" (click)="forgotPassword=true" class="pull-right black">Forgot Password</a>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="rememberme" [(ngModel)]="rememberme"> Remember me
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <reset-password (close)="cancel()" *ngIf="forgotPassword"></reset-password>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="modal-dialog">
+  <div class="modal-content modal-min-height">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+      <h4 class="modal-title">Sorry
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <br>
+        <h3 style="margin-top:0px;">Sorry the company you searched for is not in our database. We will add it soon.
+
+          <br>
+          Thanks for your patience</h3>
+        <div>
+          <p></p>
+
+          <div class="form-group">
+            <input [ngClass]="{'invalid': error.name}" type="text" class="form-control" id="companyname" placeholder="Company Name" [(ngModel)]="name">
+          </div>
+
+          <div class="form-group">
+            <input [ngClass]="{'invalid': error.email}" type="email" class="form-control" id="exampleInputEmail3" placeholder="Your Email" [(ngModel)]="email">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn primary-button" (click)="notify()">Notify me</button>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

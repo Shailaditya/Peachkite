@@ -1,0 +1,24 @@
+.kite .benefit-selected{
+	text-decoration: none !important;
+    background:url(../assets/images/kite.png) no-repeat left -18px !important;
+}
+
+.padding-right-0{
+  padding-right:0px;
+}
+
+.company-details .invalid{
+  border:1px solid #ff0000;
+}
+
+.nopad-right{
+  padding-right:0px !important;
+}
+
+.info-icon{
+  margin-left:10px;
+}
+
+.form-input-label{
+  display: inline-flex;
+}

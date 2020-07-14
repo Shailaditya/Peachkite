@@ -1,0 +1,15 @@
+.invalid{
+  border:1px solid #ff0000 !important;
+}
+
+.media-date[disabled],.media-date[readonly]{
+  background-color: white !important;
+}
+
+.error-message{
+  font-size: 11px;
+  color: red;
+  position: absolute;
+  margin-left: 16%;
+  margin-top: 4px;
+}

@@ -1,0 +1,17 @@
+<div class="org-cms-bg cms-outer" *ngIf="isLoaded">
+  <div class="container box-shadow2 cms-container nopad">
+    <div class="col-md-3 leftarea nopad">
+      <ul>
+        <!--<li (click)="setActive($event,null)"><a href="javascript:void(0)"> <i class="fa fa-line-chart" aria-hidden="true"></i> Insights</a></li>-->
+        <li (click)="setActive($event,'app.company-admin.general')" class="activeLA"><a href="javascript:void(0)"> <i class="fa fa-building-o" aria-hidden="true"></i> General</a></li>
+        <li (click)="setActive($event,'app.company-admin.benefits')"><a href="javascript:void(0)"> <i class="fa fa-gift" aria-hidden="true"></i> Benefits</a></li>
+        <li (click)="setActive($event,'app.company-admin.notifications')"><a href="javascript:void(0)"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Notifications</a></li>
+        <li (click)="setActive($event,'app.company-admin.multimedia')"><a href="javascript:void(0)"> <i class="fa fa-play" aria-hidden="true"></i> Multimedia</a></li>
+        <!--<li (click)="setActive($event,null)"><a href="javascript:void(0)"><i class="fa fa-suitcase" aria-hidden="true"></i> Jobs</a></li>-->
+        <!--<li (click)="setActive($event,null)"><a href="javascript:void(0)"><i class="fa fa-heart" aria-hidden="true"></i> Subscription</a></li>-->
+        <li (click)="setActive($event,'app.company-admin.faq')"><a href="javascript:void(0)"><i class="fa fa-question-circle-o" aria-hidden="true"></i> FAQ</a></li>
+      </ul>
+    </div>
+    <ui-view></ui-view>
+  </div>
+</div>

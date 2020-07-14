@@ -1,0 +1,37 @@
+<div class="home-section1">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2 home-ser-section-bg adzindex">
+      <div class="col-md-12 home-search-section">
+        <div class="col-md-6 col-sm-6 nopad main-search-section">
+          <div class="col-md-12 text-center">
+            <h4>How women friendly is your Organization ?</h4>
+            <p>Learn about what organizations are doing to support your career and tell us about effectiveness of such initiatives in your organizations</p>
+            <form class="navbar-form" role="search" autocomplete="off">
+              <div class="">
+                <div class="input-group col-md-12 search-company-wrapper" [ngClass]="{'hide':hideSearch}">
+                  <input id="company-search-input" type="text" class="form-control header-search-tfBig"
+                         placeholder="Company Name" ngui-auto-complete name="company"
+                         [(ngModel)]="company" [source]="observableSource.bind(this)"
+                         auto-select-first-item="true" select-on-blur="true"
+                         list-formatter="name" min-chars="3" (keyup.enter)="searchSubmit($event)">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default header-search-iconBig" (click)="searchSubmit($event)" style="margin-left: -30%">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <h4 class="mar-top-1" (click)="searchSubmit($event)" style="cursor: pointer">Tell Us Now!</h4>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 nopad text-center">
+          <div class="home-video"><video controls autoplay controlsList="nodownload">
+            <source src="assets\video\intro_video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

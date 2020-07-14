@@ -1,0 +1,87 @@
+<ng-container *ngIf="isLoaded">
+  <section class="in-page">
+    <div class="company-details">
+      <div class="container comp-info card-3">
+        <div class="col-md-2 col-sm-2 col-xs-3"><img class="img-responsive" src="{{company.logo}}" alt="{{company.name}}"></div>
+        <div class="col-md-4 col-sm-4 col-xs-9 nopad">
+          <h4>{{company.name}}</h4>
+          <h5>{{company.industry}}</h5>
+          <h4>{{company.employeeRange}}</h4>
+        </div>
+        <div class="col-md-5 col-sm-5">
+          <div class="col-md-4 col-sm-4">
+            <h5 class="form-input-label">
+              <span class="only-desk">Job title</span>
+              <span class="only-mobile">Job title when you were last associated with this company.</span>
+              <i class="fa fa-info-circle info-icon only-desk" aria-hidden="true" title="Job title when you were last associated with this company."></i>
+            </h5>
+            <input id="user-designation-input" type="text" class="form-control" [ngClass]="{'invalid': errorMap.userDesignation}" placeholder="Job title" [(ngModel)]="feedback.userDesignation" name="userDesignation">
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <h5 class="form-input-label">
+              <span class="mandatory">*</span>
+              <span class="only-desk">Status</span>
+              <span class="only-mobile">Martial status when you were last associated with this company.</span>
+              <i class="fa fa-info-circle info-icon only-desk" aria-hidden="true" title="Martial status when you were last associated with this company."></i>
+            </h5>
+            <select class="form-control" [(ngModel)]="feedback.userMartialStatus" name="userMartialStatus" [ngClass]="{'invalid': errorMap.userMartialStatus}">
+              <option>Single</option>
+              <option>Married</option>
+              <option>Mother</option>
+            </select>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <h5 class="form-input-label">
+              <span class="mandatory">*</span>
+              <span class="only-desk">Year</span>
+              <span class="only-mobile">Year when you were last associated with this company.</span>
+              <i class="fa fa-info-circle info-icon only-desk" aria-hidden="true" title="Year when you were last associated with this company."></i>
+            </h5>
+            <select class="form-control" [(ngModel)]="feedback.userAssociationYear" name="userAssociationYear" [ngClass]="{'invalid': errorMap.userAssociationYear}">
+              <ng-container  *ngFor="let year of years"><option>{{year}}</option></ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="rating-section">
+    <div class="container nopad">
+      <ng-container *ngFor="let benefit of feedback.benefits;let i = index">
+        <div class="col-md-6 nopad" [ngClass]="{'col-md-offset-3': isLastOddBenefit(i)}">
+          <div class="card-1 rating-box nopad">
+            <span class="col-md-9 col-sm-9 col-xs-8 nopad">{{benefit.label}}</span>
+            <span class="kite col-md-3 col-sm-3 col-xs-4 nopad">
+						<a href="javascript:void(0)" title="Very Unsatisfied" [ngClass]="{'benefit-selected': benefit.rating >= 1}" (click)="benefit.rating= benefit.rating==1?0:1"></a>
+						<a href="javascript:void(0)" title="Unsatisfied" [ngClass]="{'benefit-selected': benefit.rating >= 2}" (click)="benefit.rating= benefit.rating==2?0:2"></a>
+						<a href="javascript:void(0)" title="Neutral" [ngClass]="{'benefit-selected': benefit.rating >= 3}" (click)="benefit.rating= benefit.rating==3?0:3"></a>
+						<a href="javascript:void(0)" title="Satisfied" [ngClass]="{'benefit-selected': benefit.rating >= 4}" (click)="benefit.rating= benefit.rating==4?0:4"></a>
+						<a href="javascript:void(0)" title="Very Satsfied" [ngClass]="{'benefit-selected': benefit.rating == 5}" (click)="benefit.rating= benefit.rating==5?0:5"></a>
+					</span>
+          </div>
+        </div>
+        <div class="clear" *ngIf="i%2!=0"></div>
+      </ng-container>
+    </div>
+  </section>
+  <section class="comment-section">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>Say more about your experience (optional)</h4>
+        <div>
+          <textarea class="form-control" placeholder="Comment" rows="5" [(ngModel)]="feedback.comment" name="comment"></textarea>
+        </div>
+        <div class="text-center">
+          <a href="javascript:void(0)" [ngClass]="{'disabled':disableSave}" class="btn primary-button" type="button" (click)="submit()">
+            Submit
+          </a>
+        </div>
+      </div>
+    </div>
+    <p></p>
+    <div class="alert text-center alert-text">
+      <strong><i class="fa fa-lock" aria-hidden="true"></i></strong> All
+      information submitted is treated confidentially and shared anonymously
+    </div>
+  </section>
+</ng-container>

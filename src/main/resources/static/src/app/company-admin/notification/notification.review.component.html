@@ -1,0 +1,28 @@
+<div class="col-md-9 nopad admin-review" *ngIf="feedback">
+  <div class="section-header">Review</div>
+  <section class="rating-section">
+    <div class="">
+      <ng-container *ngFor="let benefit of feedback.benefits;let i = index">
+        <div class="col-md-6 nopad" [ngClass]="{'col-md-offset-3': isLastOddBenefit(i)}">
+          <div class="card-1 rating-box nopad" style="margin:0px;">
+            <span class="col-md-9 col-sm-9 col-xs-8 nopad">{{benefit.label}}</span>
+            <span class="kite col-md-3 col-sm-3 col-xs-4 nopad">
+						<a href="javascript:void(0)" title="Very Unsatisfied" [ngClass]="{'benefit-selected': benefit.rating >= 1}"></a>
+						<a href="javascript:void(0)" title="Unsatisfied" [ngClass]="{'benefit-selected': benefit.rating >= 2}"></a>
+						<a href="javascript:void(0)" title="Neutral" [ngClass]="{'benefit-selected': benefit.rating >= 3}"></a>
+						<a href="javascript:void(0)" title="Satisfied" [ngClass]="{'benefit-selected': benefit.rating >= 4}"></a>
+						<a href="javascript:void(0)" title="Very Satsfied" [ngClass]="{'benefit-selected': benefit.rating == 5}"></a>
+					</span>
+          </div>
+        </div>
+        <div class="clear" *ngIf="i%2!=0"></div>
+      </ng-container>
+    </div>
+  </section>
+  <div class="col-sm-12 space-top CMS-form">
+    <div class="text-center">
+      <textarea disabled class="form-control" placeholder="Comment" rows="5" [(ngModel)]="feedback.comment" name="comment"></textarea>
+      <button class="btn secondary-button" (click)="back()">Back</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<form class="navbar-form" style="margin-top:100px;" role="search" autocomplete="off">
+  <div style="text-align:center;">
+    <div class="input-group col-md-12 search-company-wrapper">
+      <input id="company-search-input" type="text" class="form-control header-search-tfBig"
+             placeholder="Company Name" ngui-auto-complete name="company"
+             [(ngModel)]="company" [source]="observableSource.bind(this)"
+             auto-select-first-item="true" select-on-blur="true"
+             list-formatter="name" min-chars="3" (keyup.enter)="searchSubmit($event)">
+      <button class="btn btn-default header-search-iconBig" (click)="searchSubmit($event)">
+        Submit
+      </button>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top: 20px;">
+    <button class="btn btn-default header-search-iconBig create-new" (click)="addNewCompany()">
+        Add New
+    </button>
+  </div>
+</form>

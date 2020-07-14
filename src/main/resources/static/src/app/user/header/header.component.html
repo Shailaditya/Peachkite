@@ -1,0 +1,53 @@
+<header>
+  <p class="p" *ngIf="showStars" style="position: fixed;">
+    <span id="fog"></span>
+    <span id="fog-2"></span>
+    <span id="glow"></span>
+    <span id="light"></span>
+    <span id="stars"></span>
+    <span id="stars-2"></span>
+    <span id="small-stars"></span>
+    <span id="small-stars-2"></span>
+  </p>
+  <nav  class="navbar navbar-fixed-top"  style="z-index:5;" >
+    <div  class="navbar-container" id="navbar-container-div">
+      <div class="container" >
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="#">
+            <img src="assets/images/peachkite-logo.png" alt="PeachKite Logo" class="logo">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right mar-top-1">
+            <li *ngIf="showSearch">
+              <form class="navbar-form" role="search" autocomplete="off">
+                <div class="input-group" id="tfhide">
+                  <input type="text" class="header-company-search-input form-control header-search-tf" placeholder="Company Name"
+                         ngui-auto-complete name="company"
+                         [(ngModel)]="company" [source]="observableSource.bind(this)"
+                         auto-select-first-item="true" select-on-blur="true"
+                         list-formatter="name" min-chars="3" (keyup.enter)="searchSubmit($event)">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default header-search-icon" (click)="searchSubmit($event)">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <li><a href="#aboutus">About Us</a></li>
+            <li><a href="#contactus" >Contact Us</a></li>
+            <ng-container *ngIf="!user">
+              <li><a href="javascript:void(0)" (click)="showSigninDialog()">Sign In</a></li>
+              <li><a href="javascript:void(0)" (click)="showSignupDialog()">Sign Up</a></li>
+            </ng-container>
+            <ng-container *ngIf="user">
+              <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

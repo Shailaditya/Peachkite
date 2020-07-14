@@ -1,0 +1,26 @@
+<div class="col-md-9 nopad" *ngIf="loaded">
+  <div class="section-header">Notifications</div>
+  <div class="col-md-12 space-top">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let notification of notifications" class="content-row" (click)="viewNotification(notification)">
+          <td scope="row">{{formatDate(notification.createdAt)}}</td>
+          <td>{{notification.type}}</td>
+          <td>{{notification.status}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="text-right">
+        <app-pagination [currentPage]="1" [totalPages]="totalPages" (pageEvent)="loadData($event)"></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>

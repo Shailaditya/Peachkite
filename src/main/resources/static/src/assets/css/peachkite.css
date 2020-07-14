@@ -1,0 +1,33 @@
+.error{
+  color: red;
+  margin-top: 5px;
+  font-size: 0.8em;
+  margin-left:2%;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ngui-auto-complete > ul{
+  width:90% !important;
+  margin-left:10% !important;
+}
+
+
+@media screen and (max-width : 1920px){
+  .only-mobile{
+    display:none !important;
+  }
+  .only-desk{
+    display:block !important;
+  }
+}
+@media screen and (max-width : 906px){
+  .only-desk{
+    display:none !important;
+  }
+  .only-mobile{
+    display:block !important;
+  }
+}

@@ -1,0 +1,42 @@
+<div id="contactus">
+  <section class="contact-bg wow fadeInUp">
+    <div class="contact-section">
+      <div class="container">
+        <form>
+          <div class="col-md-6 col-sm-6 form-line">
+            <h3 class="white-font">Contact Us</h3>
+            <span class="text-center white-font">Give us your details and we will get in touch</span>
+            <div class="form-group">
+              <input type="text" class="form-control cont-form-tf"  placeholder="* Name" name="name" [(ngModel)]="modal.name">
+              <div class="error" *ngIf="error.name">{{error.name}}</div>
+            </div>
+            <div class="form-group" *ngIf="!isLoggedIn">
+              <input type="email" class="form-control cont-form-tf" placeholder="* Email" name="email" [(ngModel)]="modal.email">
+              <div class="error" *ngIf="error.email">{{error.email}}</div>
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control cont-form-tf" placeholder="Contact no." name="phone" [(ngModel)]="modal.phone">
+              <div class="error" *ngIf="error.phone">{{error.phone}}</div>
+            </div>
+            <div class="form-group">
+              <textarea  class="form-control cont-form-tf" placeholder="Message" name="query" [(ngModel)]="modal.query"></textarea>
+              <div class="error" *ngIf="error.query">{{error.query}}</div>
+            </div>
+            <div>
+              <a href="javascript:void(0)" class="btn primary-button" (click)="submit()"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 cont-social">
+            <span class="white-font"> Email us at </span>
+            <a href="mailto:flypeachkite@gmail.com">support@peachkite.com</a>
+            <hr class="dark">
+            <a  href="#"class="btn  btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a  href="#" class="btn  btn-twitter"><i class="fa fa-twitter"></i></a>
+            <a  href="#" class="btn btn-google-plus"><i class="fa fa-google-plus"></i></a>
+            <a  href="#" class="btn btn-linkedin"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

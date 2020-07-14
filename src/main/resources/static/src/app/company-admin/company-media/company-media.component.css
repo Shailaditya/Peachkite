@@ -1,0 +1,7 @@
+.content-row{
+  cursor:pointer;
+}
+
+.content-row:hover{
+  background-color: lightgrey;
+}
