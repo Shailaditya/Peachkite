@@ -26,7 +26,7 @@
     "@types/moment": "^2.13.0",
     "@uirouter/angular": "^1.0.0-beta.7",
     "core-js": "^2.4.1",
-    "moment": "^2.19.2",
+    "moment": "^2.29.2",
     "ng2-bootstrap-modal": "^1.0.1",
     "ng2-date-picker": "^2.7.4-alpha",
     "rxjs": "^5.0.1",
